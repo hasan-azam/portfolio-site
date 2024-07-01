@@ -1,6 +1,5 @@
 name: Deploy Vite React App
 
-# Triggers the workflow on push events to the master branch
 on:
   push:
     branches:
@@ -12,20 +11,21 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Update to v3 for Node.js 20 support
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  # Update to v3 for Node.js 20 support
         with:
-          node-version: '14'
+          node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --verbose
 
       - name: Build the project
-        run: npm run build
+        run: npm run build --verbose
 
       - name: Deploy to Hostinger
         run: |
+          apt-get update
           apt-get install -y lftp
           lftp -e "mirror -R dist/ public_html/; bye" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ftp://ftp.your-domain.com
