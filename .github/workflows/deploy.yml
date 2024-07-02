@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # Update to v3 for Node.js 20 support
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Update to v3 for Node.js 20 support
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
 
@@ -28,4 +28,4 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y lftp
-          lftp -e "mirror -R dist/ public_html/; bye" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ftp://82.180.168.32
+          lftp -e "mirror -R dist/ public_html/; bye" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ftp://margallasoftware.com
