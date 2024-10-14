@@ -1,5 +1,5 @@
 import {HERO_CONTENT} from "../constants";
-import profilePic from "../assets/hasanAzamProfile.png"
+import profilePic from "../assets/HasanProfilePic.jpg"
 
 const Hero = () => {
   return <div className="border-b border-neutral-900 pb-4 lg:mb-35"> 
