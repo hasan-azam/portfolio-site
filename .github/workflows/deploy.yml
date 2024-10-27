@@ -24,8 +24,4 @@ jobs:
       - name: Build the project
         run: npm run build --verbose
 
-      - name: Deploy to Hostinger
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y lftp
-          lftp -e "mirror -R dist/ public_html/; bye" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ftp://ftp.hasanazam.com
+      
